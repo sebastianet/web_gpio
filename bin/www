@@ -8,7 +8,8 @@ var app = require('../app');
 var debug = require('debug')('Raspberry-Pi-Simple-Web-GPIO-GUI:server');
 var http = require('http');
 
-require('dotenv').config();
+// require('dotenv').config();
+require('dotenv').config({path:__dirname+'/.env'})
 
 /**
  * Get port from environment and store in Express.

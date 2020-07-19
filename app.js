@@ -1,15 +1,16 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
+var express      = require('express');
+var path         = require('path');
+var favicon      = require('serve-favicon');
+var logger       = require('morgan');
 var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+var bodyParser   = require('body-parser');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
-var ajax = require('./routes/ajax');
+var users  = require('./routes/users');
+var ajax   = require('./routes/ajax');
 
-require('dotenv').config();
+// require('dotenv').config();
+require('dotenv').config({path:__dirname+'/.env'})
 
 var app = express();
 
@@ -44,7 +45,7 @@ app.use(function(req, res, next) {
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
-    res.render('error', {
+    res.render('--- error DEV', {
       message: err.message,
       error: err
     });
@@ -55,11 +56,12 @@ if (app.get('env') === 'development') {
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
-  res.render('error', {
+  res.render('--- error PROD', {
     message: err.message,
     error: {}
   });
 });
 
-app.listen(app.get('port'));
+app.listen( app.get('port') ) ;
+
 module.exports = app;

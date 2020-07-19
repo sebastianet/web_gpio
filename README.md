@@ -14,3 +14,6 @@ The following environment variables are supported:
  - `PORT` - The port the webserver runs at. (default 80)
 
 ***The [dotenv](https://github.com/motdotla/dotenv) environment is supported.***
+
+*** Sa meua modificacio
+
